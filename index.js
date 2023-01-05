@@ -1,10 +1,13 @@
 var express = require('express');
 const cors = require("cors");
 const cookieSession = require("cookie-session")
+const db = require('./models');
 
 
 const app = express()
 const port = 3000
+
+db.sequelize.sync();
 
 app.use(cors())
 
