@@ -1,9 +1,9 @@
 module.exports = {
     HOST: "localhost",
-    USER:"leo",
-    PASSWORD:"sqlpass",
+    USER:"tester",
+    PASSWORD:"root",
     DB:"gaming-ambition",
-    PORT:8889,
+    PORT:3306,
     dialect:"mysql",
     pool:{
         max:5,
