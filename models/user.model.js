@@ -3,10 +3,6 @@ const { Sequelize } = require("sequelize");
 module.exports = (sequelize, Sequelize) => {
     // users model
     const User = sequelize.define('users', {
-        id: {
-            type: Sequelize.INTEGER,
-            primaryKey: true
-        },
         username: {
             type: Sequelize.TEXT,
             allowNull: false
@@ -21,7 +17,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         rank: {
             type: Sequelize.INTEGER,
-            allowNull: false
+            allowNull: false,
         }
     });
     return User;

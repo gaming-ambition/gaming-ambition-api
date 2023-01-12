@@ -3,10 +3,6 @@ const { Sequelize } = require("sequelize");
 module.exports = (sequelize, Sequelize) => {
     // tournaments model
 const Tournament = sequelize.define('tournaments', {
-    id: {
-      type: Sequelize.INTEGER,
-      primaryKey: true
-    },
     name: {
       type: Sequelize.TEXT,
       allowNull: false

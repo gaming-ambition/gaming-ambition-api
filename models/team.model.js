@@ -1,10 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     // teams model
     const Team = sequelize.define('teams', {
-        id: {
-            type: Sequelize.INTEGER,
-            primaryKey: true
-        },
         tournament_id: {
             type: Sequelize.INTEGER,
             allowNull: false,
