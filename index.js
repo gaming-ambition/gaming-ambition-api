@@ -27,6 +27,8 @@ app.get('/', (req,res) => {
     res.json({message: "Welcome to gaming ambition api"})
 });
 
+require('./routes/auth.routes')(app);
+
 app.listen(port, () => {
     console.log('App launch on port ',port)
 })

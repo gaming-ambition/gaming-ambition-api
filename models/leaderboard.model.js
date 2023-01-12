@@ -1,10 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     // leaderboard model
 const Leaderboard = sequelize.define('leaderboard', {
-    id: {
-      type: Sequelize.INTEGER,
-      primaryKey: true
-    },
     tournament_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
