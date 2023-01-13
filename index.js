@@ -3,10 +3,18 @@ const cors = require("cors");
 const cookieSession = require("cookie-session")
 const db = require('./models');
 
+/**
+ * @controllers @imports
+ * Controllers import
+ */
+const tournamentController = require('./controllers/tournamentController');
+
+
+/** */
 const app = express()
 const port = 3000
 
-db.sequelize.sync();
+db.sequelize.sync({force: true});
 
 app.use(cors())
 
@@ -19,12 +27,7 @@ app.use(
         name:"standfor-session",
         secret:"F1",
         httpOnly:true
-    }), 
-    (req, res, next) => {
-        const err = new Error(`${req.url} not found in this server`);
-        err.status = 404;
-        next(err);
-    }
+    })
 )
 // setting another error program
 app.use((err, req, res, next) => {
@@ -37,8 +40,11 @@ app.get('/', (req,res) => {
 });
 
 app.post('/create_tournament', (req, res) => {
-    res.json({message: "Welcome to gaming ambition api"})
+    // res.json();
+    tournamentController.create(req, res);
+    // res.json({message: "create a tournament", data: req.body})
 })
+
 
 app.listen(port, () => {
     console.log('App launch on port ',port)

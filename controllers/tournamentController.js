@@ -1,16 +1,31 @@
-const model = require("../model/index");
+const model = require("../models/index");
 const { Op } = require("sequelize");
 const controller = {};
+const { v4: uuidv4 } = require('uuid');
+
+
+const defaultCreateValues ={ 
+    end_date: new Date(),
+    updated_at: new Date(),
+    start_date: new Date(),
+    created_at: new Date(),
+}
+
+
+const defaultUpdateValues ={
+    end_date: new Date(),
+    updated_at: new Date(),
+}
 
 controller.create = async (req, res) => {
     try {
         const { name, game, max_teams } = req.body;
         const tournament = await model.tournament.create({
+            id: 2323,
             name,
             game,
             max_teams,
-            start_date: new Date(),
-            created_at: new Date(),
+            ...defaultCreateValues
         });
         res.status(200).json({ tournament });
     } catch (error) {
@@ -50,8 +65,7 @@ controller.update = async (req, res) => {
             name,
             game,
             max_teams,
-            end_date: new Date(),
-            updated_at: new Date(),
+            ...defaultUpdateValues
         }, {
             where: { id }
         });
@@ -60,3 +74,6 @@ controller.update = async (req, res) => {
         res.status(500).json({ error });
     }
 }
+
+
+module.exports = controller;
