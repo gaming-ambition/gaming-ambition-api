@@ -8,7 +8,13 @@ const db = require('./models');
  * Controllers import
  */
 const tournamentController = require('./controllers/tournamentController');
+const matchController = require('./controllers/matchController');
 
+/**
+ * @routes @imports
+ * Routes import
+ *  */
+const tournamentRoutes = require('./router/tournamentRoutes');
 
 /** */
 const app = express()
@@ -42,39 +48,15 @@ app.get('/', (req,res) => {
 
 //* ANCHOR: Tournament routes
 
-// Create a tournament
-app.post('/create_tournament', (req, res) => {
-    // res.json();
-    tournamentController.create(req, res);
-    // res.json({message: "create a tournament", data: req.body})
-})
-
-// Get all tournaments
-app.get('/tournaments', (req, res) => {
-    tournamentController.findAll(req, res);
-    // res.json({message: "get all tournaments"})
-})
-
-// Update a tournament
-app.put('/update_tournament/:id', (req, res) => {
-    tournamentController.update(req, res);
-    // res.json({message: "update a tournament"})
-})
-
-// find a tournament
-app.get('/find_tournament/:id', (req, res) => {
-    tournamentController.findOne(req, res);
-    // res.json({message: "find a tournament"})
-})
-
-// Delete a tournament
-app.delete('/delete_tournament/:id', (req, res) => {
-    tournamentController.delete(req, res);
-    // res.json({message: "delete a tournament"})
-})
-
+app.use('/tournaments', tournamentRoutes);
 // *!SECTION: teams routes
 
+
+// *!SECTION: match routes
+
+app.post('/create_match', (req, res) => {
+    res.json({message: "create a match", data: req.body})
+})
 
 
 

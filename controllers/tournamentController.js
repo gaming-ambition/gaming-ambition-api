@@ -21,7 +21,6 @@ controller.create = async (req, res) => {
     try {
         const { name, game, max_teams } = req.body;
         const tournament = await model.tournament.create({
-            // id: uuidv4(),
             name,
             game,
             max_teams,
