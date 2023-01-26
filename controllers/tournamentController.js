@@ -21,7 +21,7 @@ controller.create = async (req, res) => {
     try {
         const { name, game, max_teams } = req.body;
         const tournament = await model.tournament.create({
-            id: 2323,
+            // id: uuidv4(),
             name,
             game,
             max_teams,
@@ -67,6 +67,19 @@ controller.update = async (req, res) => {
             max_teams,
             ...defaultUpdateValues
         }, {
+            where: { id }
+        });
+        res.status(200).json({ tournament });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+}
+
+//delete tournament
+controller.delete = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const tournament = await model.tournament.destroy({
             where: { id }
         });
         res.status(200).json({ tournament });
