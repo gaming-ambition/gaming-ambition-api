@@ -5,7 +5,8 @@ module.exports = (sequelize, Sequelize) => {
 const Tournament = sequelize.define('tournaments', {
     id: {
       type: Sequelize.INTEGER,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
     name: {
       type: Sequelize.TEXT,
