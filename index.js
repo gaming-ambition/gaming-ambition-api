@@ -39,6 +39,9 @@ app.get('/', (req,res) => {
     res.json({message: "Welcome to gaming ambition api"})
 });
 
+
+//* ANCHOR: Tournament routes
+
 // Create a tournament
 app.post('/create_tournament', (req, res) => {
     // res.json();
@@ -69,6 +72,13 @@ app.delete('/delete_tournament/:id', (req, res) => {
     tournamentController.delete(req, res);
     // res.json({message: "delete a tournament"})
 })
+
+// *!SECTION: teams routes
+
+
+
+
+// *!SECTION: Ports definition
 
 app.listen(port, () => {
     console.log('App launch on port ',port)
